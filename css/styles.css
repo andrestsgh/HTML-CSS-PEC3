@@ -1,0 +1,800 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Satisfy&display=swap");
+
+/* Color variables */
+:root {
+    --main-color: #D11067;
+    --dark-color: #7A1628;
+    --yellow: #FFF616;
+    --text-color-field: #FFFFFF33;
+    --text-color: #172655;
+    --bg-light-yellow: #FEFBF4;
+    --bg-dark-gray: #333333;
+    --bg-light-green: #DEF5F0;
+    --bg-light-blue: #E3EDFD;
+    --bg-light-orange: #F7E9E7;
+    --border-color: #EDEDED;
+/*    
+    --header: red;
+    --main: blue;
+    --footer: green;
+
+    --l1: #00000022;
+*/
+}
+
+/* Font Styles */
+.montserrat-400 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.montserrat-500 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.montserrat-700 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.satisfy-regular {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*
+body * {
+    padding: 5px;
+    margin: 5px;
+}
+
+.l1 {
+    background-color: var(--l1);
+}
+*/
+
+/* RESET STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*border: 1px solid purple;*/ 
+}
+
+/*************************************************************
+********  G L O B A L   S T Y L E S  *************************
+**************************************************************/
+html {
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+}
+
+body {
+    background-color: white;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header{
+    background-color: var(--main-color);
+}
+
+header > *{
+    padding: 0.625em 0em;
+}
+
+.header-background {
+    background-image: url('../img/blackboard.jpg');
+    background-size: cover;
+    color: white;
+}
+
+main > * {
+    padding: 4em 0em;
+}
+
+footer{
+    background-color: var(--footer);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    width: 94%;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-border {
+    border-radius: 2em;
+}
+
+.round-border {
+    border-radius: 50%;
+    padding: 1.25em;
+}
+
+.flex-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/********** SKIP TO MAIN CONTENT ********************************************************************/
+.skip-to-main-content-link {
+    position: absolute; /*Positions the link absolutely on the page, allowing it to be placed anywhere.*/
+    bottom: 0px;
+    left: -9999px; /*Moves the link far off-screen to the left, making it invisible to sighted users.*/
+    z-index: 999; /*Sets a high z-index, ensuring that the link will be on top of other page elements if it becomes visible.*/
+    padding: 1em;
+    background-color: black;
+    color: white;
+    opacity: 0; /*Sets the link's opacity to 0, making it fully transparent and invisible.*/
+}
+  
+.skip-to-main-content-link:focus {
+    left: 50%; /* When the link receives focus (e.g., when a keyboard user tabs to it), it is repositioned horizontally to the centre of the screen.*/
+    transform: translateX(-50%); /*This centres the link horizontally by moving it back to the left by 50% of its own width.*/
+    opacity: 1; /*The link's opacity is set to 1, making it fully visible.*/
+}
+
+/********** HEADER ********************************************************************/
+.header-bar > .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.header-bar > .container * {
+    margin: 0 0.2em;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+}
+
+.header-main > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* MENU */
+.main-menu li {
+    padding: 1em 4em;
+}
+
+.main-menu li a {
+    text-decoration: none;
+    padding: 1em;
+    border-bottom: 4px solid transparent;
+}
+
+.main-menu li a:not(.current):hover {
+    border-bottom-color: white;
+}
+
+.main-menu,
+.toggle-menu .menu-close {
+    /* Hide the menu and close button */
+    display: none;
+}
+
+#toggle-menu-checkbox:checked ~ .main-menu,
+#toggle-menu-checkbox:checked ~ .toggle-menu .menu-close {
+    /* Show the menu and close button */
+    display: block;
+}
+
+#toggle-menu-checkbox:checked ~ .toggle-menu .menu-open {
+    /* Hide the open button */
+    display: none;
+}
+
+.toggle-menu {
+    position: relative;
+    width: 40px;
+    z-index: 1;
+    place-content: center;
+    font-size: 4rem;
+}
+
+.menu-close, 
+.menu-open {
+    cursor: pointer;
+}
+
+.main-menu {
+    background-color: black;
+    position: fixed;
+    top: 0em;
+    left: 100%;
+    height: 100%;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 6em 2em;
+    list-style: none;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+}
+
+.main-menu--show {
+    transform: translateX(0);
+}
+
+.toggle-menu__checkbox {
+    display: none;
+}
+
+.toggle-menu__checkbox:checked ~ .main-menu {
+    transform: translateX(0);
+}
+
+.current {
+    color: var(--yellow);
+}
+
+/* Header Extra */
+.header-extra, .header-search, .header-features {
+    padding: 1em 0em;
+}
+
+.header-extra {
+    text-align: center;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-search {
+    max-width: 800px;
+}
+
+.header-search > p {
+    padding: 3em 0em;
+}
+
+.header-search h1, .get-started h1, .learning-solutions h1 {
+    font-size: 4.6rem;
+}
+.get-started h1, .learning-solutions h1 {
+    line-height: 1em;
+}
+
+.header-search > h1 > span {
+    color: var(--yellow);
+}
+
+.header-features{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.header-features > * {
+    padding: 2em 0em;
+}
+
+.input-button {
+    display: flex;
+    padding: 0.6em;
+    border-radius: 2em;
+}
+
+.input-button input {
+    flex: 1;
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+    font-size: medium;
+}
+
+.input-button button {
+    padding: 1em 1.5em;
+    border: none;
+    border-radius: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: medium;
+}
+
+.input-button button img {
+    margin-right: 5px;
+}
+
+.input-button button span {
+    display: inline-block;
+}
+
+.input-search {
+    background-color: white;
+}
+
+.input-search button{
+    background-color: var(--main-color);
+    color: white;
+}
+
+.input-search button:hover{
+    background-color: var(--text-color);
+}
+
+/************* FOOTER ******************************************************************/
+footer {
+    background-color: var(--text-color);
+    color: white;
+    padding: 2em 0em;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer > .container > *, .footer-info > *  {
+    padding: 1em 0em;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: max-content; /* Adjust subscribe input width to footer menu width */
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 1em 0em;
+}
+
+.footer-menu ul {
+    list-style-type: none;
+    padding: 0em;
+    text-align: left;
+}
+
+.footer-menu ul li {
+    display: inline;
+    padding-right: 0.3em;
+}
+footer .credits a {
+    background-color: var(--text-color-field);
+    font-size: 0.8rem;
+}
+
+.input-subscribe {
+    background-color: var(--text-color-field);
+    width: 100%;
+    margin: 1em 0em;
+}
+
+.input-subscribe input {
+    background-color: transparent;
+    color:white;
+}
+
+.input-subscribe button{
+    background-color: white;
+    color: var(--text-color);
+    padding: 1em;
+    border-radius: 50%;
+}
+
+.input-subscribe button:hover{
+    background-color: var(--main-color);
+}
+
+.input-subscribe button:hover img{
+    filter: invert(1);
+}
+
+/*************************************************************
+********  I N D E X . H T M L  *******************************
+**************************************************************/
+.button-transparent-main {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--main-color);
+    text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 1.5em;
+}
+
+.button-transparent-main:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.button-transparent-white {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 1.5em;
+}
+
+.button-transparent-white:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+
+/**************** Popular courses section ********************************************/
+.popular-courses{
+    background-color: white;
+}
+
+.popular-courses > div:last-child {
+    text-align: center;
+    padding-top: 4em;
+}
+.popular-courses > * {
+    padding: 0.2em 0em;
+}
+
+.popular-courses > h1 {
+    color: var(--main-color);
+    font-size: xx-large;
+}
+
+.top-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 columns same width */
+    gap: 37px;
+}
+
+/* Card Course */
+.card-course {
+    height: 340px;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    background-color: white;
+    color: var(--text-color);
+}
+
+.card-course:hover {
+    border-color: var(--text-color);
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+}
+
+.card-course:hover img{
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+
+.card-course:not(:hover) img{
+    transition: transform 0.3s;
+    transform: scale(1);
+}
+
+.card-course-image {
+    border-radius: 15px 15px 0px 0px;
+    position: relative;
+    max-width: 100%;
+    height: 60%;
+    overflow: hidden; /* Crop image in card-course-image */
+}
+
+.card-course-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-course-new {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--main-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+
+.card-course-best-seller {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--yellow);
+    color: var(--main-color);
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+
+.card-course-content {
+    padding: 15px;
+}
+
+.card-course-content h2 {
+    color: var(--dark-color);
+    margin: 0 0 10px;
+}
+
+.card-course-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.card-course-details span {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.card-course-icon {
+    margin-right: 5px;
+    color: var(--bg-dark-gray);
+}
+
+/***************** Get Started Section ************************************/
+.get-started {
+    color: white;
+    background-image: url('../img/learn-path.jpg');
+    background-size: cover;
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.get-started > .container > *, .become-instructor > .container > div > * {
+    margin-top: 1em;
+}
+
+.get-started h2 {
+    font-weight: normal;
+}
+
+/***************** Learning solutions section ************************************/
+.learning-solutions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.learning-solutions h1{
+    color: var(--dark-color);
+    padding-bottom: 1em;
+}
+
+.grid-learning-solutions {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Auto-adjust width columns */
+    grid-template-rows: repeat(4, 1fr); /* 4 rows same height */
+    gap: 37px;
+    align-items: center;
+}
+
+.bg-light-green {
+    background-color: var(--bg-light-green);
+}
+
+.bg-light-blue {
+    background-color: var(--bg-light-blue);
+}
+
+.bg-light-orange {
+    background-color: var(--bg-light-orange);
+}
+
+.learning-solutions-content > p:first-child {
+    color: var(--dark-color);
+    font-size: large;
+}
+
+/***************** Top Categories section ************************************/
+.top-categories {
+    text-align: center;
+    background-color: var(--border-color);
+    box-shadow: inset 0px 10px 10px -10px rgb(0,0,0,0.2);
+}
+
+.top-categories > div > h1 {
+    font-size: 3rem;
+    padding-bottom: 1em;
+    color: var(--main-color);
+}
+
+.top-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 columns same width */
+    gap: 37px;
+}
+
+.card-category {
+    color: white;
+    padding: 3em;
+    background-color: var(--text-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-category > p:first-child {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.card-category > p:last-child {
+    font-size: 1.25rem;
+}
+
+.card-category:hover {
+    background-color: var(--main-color);
+}
+
+/***************** Become Instructor Section ************************************/
+.become-instructor {
+    background-color: var(--bg-light-orange);
+    box-shadow: inset 0px 10px 10px -10px rgb(0,0,0,0.2);
+}
+
+.become-instructor > .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.become-instructor > .container > img {
+    width: 100%;
+    padding: 1em;
+}
+
+.become-instructor h1 {
+    font-size: 2.5em;
+    color: var(--dark-color);
+}
+
+/*************************************************************
+********  M E D I A   Q U E R I E S  *************************
+**************************************************************/
+/* Tablet version */
+@media (min-width: 768px) {
+    .header-bar > .container {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .header-features{
+        flex-direction: row;
+    }
+    .top-courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .top-categories-grid {
+        grid-template-columns: repeat(2, 1fr); /* 4 columnas de igual ancho */
+    }
+    .become-instructor > .container{
+        flex-direction: row;
+    }
+    .footer-info {
+        flex-direction: column-reverse;
+    }
+}
+/* Desktop Version */
+@media (min-width: 992px) {
+    .toggle-menu {
+        display: none;
+    }
+    .toggle-menu__checkbox:checked ~ .main-menu {
+        transform: translateX(-100%);
+    }
+    .main-menu {
+        position: inherit;
+        flex-direction: row;
+        transform: translateX(-100%);
+        background-color: transparent;
+        padding: 0em;
+        display: block;
+    }
+    .contact {
+        display: flex;
+        justify-content: center;
+    }
+
+    .social {
+        display: flex;
+        justify-content: center;
+    }    
+    .main-nav {
+        position: relative;
+    }
+    .main-menu > li {
+        display: inline;
+        padding: 10px;
+
+    }
+    .main-nav > label {
+        display: none;
+    }
+    #login:hover{
+        color: var(--main-color);
+        border-bottom: none;
+    }
+    #signup {
+        background-color: white;
+        color: var(--dark-color);
+        padding: 10px 20px;
+        border-radius: 20px;
+        border-bottom: none;
+    }
+    #signup:hover {
+        background-color: var(--main-color);
+        color: white;
+    }
+    .top-courses-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .learning-solutions {
+        flex-direction: row;
+    }
+    .top-categories-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual ancho */
+    }
+    /* Especifica la posición del tercer elemento */
+    .top-categories-grid > .card-category:nth-child(3) {
+        grid-row: span 2; /* Ocupa dos filas */
+    }
+    .become-instructor > .container > img {
+        margin-right: 10em;
+    }
+    .footer-info {
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .current {
+        border-bottom-color: var(--yellow);
+    }
+}
