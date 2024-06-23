@@ -1061,7 +1061,7 @@ ol.career-path-list > li {
         margin-left: auto;
         margin-right: auto;
     }
-    .instructor-box > ul {
+    .skills > ul {
         column-count: 3;
         column-gap: 2em;
     }
